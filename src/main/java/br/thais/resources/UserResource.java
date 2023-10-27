@@ -1,6 +1,7 @@
 package br.thais.resources;
 
 import br.thais.domain.User;
+import br.thais.domain.dto.UserDTO;
 import br.thais.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class UserResource {
     private UserService service;
 
     @GetMapping(value = "/id")
-    public ResponseEntity<User> findById(@PathVariable Integer id) {
-        return ResponseEntity.ok().body(service.findById(id));
+    public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(mapper.map(service.findById(id), UserDTO.class));
     }
 }
