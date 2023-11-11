@@ -137,3 +137,13 @@ G.idea/sonarlint/issuestore/e/3/e3bb1ba527584604a2f5825034c21515312facb9,4\9\49
 Q.idea/sonarlint/securityhotspotstore/6/6/6620094149fce51fd3a87ccaa4a8d3977ea95a18,1\f\1f8d256f3b8dbb2337f834f9e149d1ce120f7094
 w
 G.idea/sonarlint/issuestore/e/2/e2b6ab083b62c975fa9d2a7f293b61f13606d20e,f\8\f8ccf409d95d2482f503874636b500962d8c6c22
+x
+Hsrc/main/java/br/thais/resources/exception/ResourceExceptionHandler.java,4\8\4812f53372f138d23a936fa0a8be8e7411fd73eb
+d
+4src/main/java/br/thais/config/ModelMapperConfig.java,b\e\beeb3bdf49c900e94dc5f4bb9b60585f84cedda1
+x
+Hsrc/main/java/br/thais/service/exception/ObjectionNotFoundException.java,2\4\248e9120f261add2811b3345af10e4c6a3eb0422
+m
+=src/main/java/br/thais/resources/exception/StandardError.java,a\6\a6c48d7eb63bb1001ae860b87ac26f22654f3ac2
+^
+.src/main/java/br/thais/domain/dto/UserDTO.java,4\f\4f8c4960fdf482712da43af115c62bdb882a913c
