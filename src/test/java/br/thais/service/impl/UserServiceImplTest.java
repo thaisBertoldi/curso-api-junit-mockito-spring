@@ -30,6 +30,7 @@ class UserServiceImplTest {
     public static final String PASSWORD = "123";
     private static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";
     public static final int INDEX = 0;
+    public static final String EXCECAO_EMAIL = "E-mail já cadastrado no sistema";
 
     @InjectMocks
     private UserServiceImpl service;
@@ -107,7 +108,7 @@ class UserServiceImplTest {
             service.create(userDTO);
         } catch (Exception ex) {
             assertEquals(DataIntegratyViolationException.class, ex.getClass());
-            assertEquals("E-mail já cadastrado no sistema", ex.getMessage());
+            assertEquals(EXCECAO_EMAIL, ex.getMessage());
         }
     }
 
@@ -132,7 +133,7 @@ class UserServiceImplTest {
             service.create(userDTO);
         } catch (Exception err) {
             assertEquals(DataIntegratyViolationException.class, err.getClass());
-            assertEquals("E-mail já cadastrado no sistema", err.getMessage());
+            assertEquals(EXCECAO_EMAIL, err.getMessage());
         }
     }
 
