@@ -24,12 +24,12 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class UserServiceImplTest {
 
-    public static final int ID = 1;
+    public static final Integer ID = 1;
     public static final String NAME = "Teste";
     public static final String EMAIL = "teste@email";
     public static final String PASSWORD = "123";
     private static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";
-    public static final int INDEX = 0;
+    public static final Integer INDEX = 0;
     public static final String EXCECAO_EMAIL = "E-mail já cadastrado no sistema";
 
     @InjectMocks
