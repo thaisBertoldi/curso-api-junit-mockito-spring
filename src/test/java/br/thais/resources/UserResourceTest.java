@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class UserResourceTest {
@@ -123,6 +123,20 @@ class UserResourceTest {
                 .isEqualTo(NAME);
         assertThat(response.getBody().getEmail())
                 .isEqualTo(EMAIL);
+    }
+
+    @Test
+    void whenDeleteWithSuccess() {
+        doNothing().when(service).delete(anyInt());
+
+        ResponseEntity<UserDTO> response = resource.delete(ID);
+        assertThat(response)
+                .isNotNull();
+        assertThat(response.getClass())
+                .isEqualTo(ResponseEntity.class);
+        assertThat(response.getStatusCode())
+                .isEqualTo(HttpStatus.NO_CONTENT);
+        verify(service, times(1)).delete(anyInt());
     }
 
     private void startUser() {
