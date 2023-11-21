@@ -19,8 +19,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -102,6 +101,28 @@ class UserResourceTest {
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertNotNull(response.getHeaders().get("Location"));
+    }
+
+    @Test
+    void whenUpdateWithSuccess() {
+        when(service.update(userDTO)).thenReturn(user);
+        when(mapper.map(any(), any())).thenReturn(userDTO);
+
+        ResponseEntity<UserDTO> response = resource.update(ID, userDTO);
+        assertThat(response)
+                .isNotNull();
+        assertThat(response.getStatusCode())
+                .isEqualTo(HttpStatus.OK);
+        assertThat(response.getClass())
+                .isEqualTo(ResponseEntity.class);
+        assertThat(response.getBody().getClass())
+                .isEqualTo(UserDTO.class);
+        assertThat(response.getBody().getId())
+                .isEqualTo(ID);
+        assertThat(response.getBody().getName())
+                .isEqualTo(NAME);
+        assertThat(response.getBody().getEmail())
+                .isEqualTo(EMAIL);
     }
 
     private void startUser() {
