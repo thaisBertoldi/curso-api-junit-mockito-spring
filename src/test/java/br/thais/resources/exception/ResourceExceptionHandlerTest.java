@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 
+import java.time.LocalDateTime;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -42,6 +44,15 @@ class ResourceExceptionHandlerTest {
                 .isEqualTo("Objeto não encontrado");
         assertThat(response.getBody().getStatus())
                 .isEqualTo(404);
+        assertThat(response.getBody().getPath())
+                .isNotEqualTo("/user/2");
+        assertThat(response.getBody().getTimestamp())
+                .isNotEqualTo(LocalDateTime.now());
+    }
+
+    @Test
+    void testDataIntegrityViolationException() {
+
     }
 
 }
