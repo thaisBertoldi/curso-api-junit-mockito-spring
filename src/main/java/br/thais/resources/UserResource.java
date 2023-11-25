@@ -1,6 +1,5 @@
 package br.thais.resources;
 
-import br.thais.domain.User;
 import br.thais.domain.dto.UserDTO;
 import br.thais.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -26,7 +25,6 @@ public class UserResource {
     private UserService service;
 
 
-
     @GetMapping(value = "/id")
     public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
         return ResponseEntity.ok().body(mapper.map(service.findById(id), UserDTO.class));
@@ -35,13 +33,13 @@ public class UserResource {
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll()
-            .stream().map(x -> mapper.map(x, UserDTO.class)).collect(Collectors.toList()));
+                .stream().map(x -> mapper.map(x, UserDTO.class)).collect(Collectors.toList()));
     }
 
     @PostMapping
     public ResponseEntity<UserDTO> create(@RequestBody UserDTO obj) {
         URI uri = ServletUriComponentsBuilder
-            .fromCurrentRequest().path(ID).buildAndExpand(service.create(obj).getId()).toUri();
+                .fromCurrentRequest().path(ID).buildAndExpand(service.create(obj).getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 

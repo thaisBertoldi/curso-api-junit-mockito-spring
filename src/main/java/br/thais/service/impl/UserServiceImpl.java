@@ -5,7 +5,7 @@ import br.thais.domain.dto.UserDTO;
 import br.thais.repository.UserRepository;
 import br.thais.service.UserService;
 import br.thais.service.exception.DataIntegratyViolationException;
-import br.thais.service.exception.ObjectionNotFoundException;
+import br.thais.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Integer id) {
         Optional<User> obj = repository.findById(id);
-        return obj.orElseThrow(() -> new ObjectionNotFoundException("Objeto não encontrado"));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
     public List<User> findAll() {

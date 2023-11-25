@@ -1,6 +1,6 @@
 package br.thais.resources.exception;
 
-import br.thais.service.exception.ObjectionNotFoundException;
+import br.thais.service.exception.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +29,7 @@ class ResourceExceptionHandlerTest {
     @Test
     void testObjectionNotFoundException() {
         ResponseEntity<StandardError> response = exceptionHandler.objectNotFound(
-                new ObjectionNotFoundException("Objeto não encontrado"),
+                new ObjectNotFoundException("Objeto não encontrado"),
                 new MockHttpServletRequest()
         );
         assertNotNull(response);

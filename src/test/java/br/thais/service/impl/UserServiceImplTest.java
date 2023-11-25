@@ -4,7 +4,7 @@ import br.thais.domain.User;
 import br.thais.domain.dto.UserDTO;
 import br.thais.repository.UserRepository;
 import br.thais.service.exception.DataIntegratyViolationException;
-import br.thais.service.exception.ObjectionNotFoundException;
+import br.thais.service.exception.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -65,11 +65,11 @@ class UserServiceImplTest {
 
     @Test
     void whenFindByIdThenReturnAnObjectNotFoundException() {
-        when(repository.findById(anyInt())).thenThrow(new ObjectionNotFoundException(OBJETO_NAO_ENCONTRADO));
+        when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException(OBJETO_NAO_ENCONTRADO));
         try{
             service.findById(ID);
         } catch (Exception ex) {
-            assertEquals(ObjectionNotFoundException.class, ex.getClass());
+            assertEquals(ObjectNotFoundException.class, ex.getClass());
             assertEquals(OBJETO_NAO_ENCONTRADO, ex.getMessage());
         }
     }
@@ -148,11 +148,11 @@ class UserServiceImplTest {
     @Test
     void whenDeleteWithException() {
         when(repository.findById(anyInt()))
-            .thenThrow(new ObjectionNotFoundException(OBJETO_NAO_ENCONTRADO));
+            .thenThrow(new ObjectNotFoundException(OBJETO_NAO_ENCONTRADO));
         try {
             service.delete(ID);
         } catch (Exception ex) {
-            assertEquals(ObjectionNotFoundException.class, ex.getClass());
+            assertEquals(ObjectNotFoundException.class, ex.getClass());
             assertEquals(OBJETO_NAO_ENCONTRADO, ex.getMessage());
         }
     }
